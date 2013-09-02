@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
+
 import unittest
+from sets import Set
 
 
 class Widget(object):
@@ -21,12 +24,14 @@ class Widget(object):
     def raise_exception(self):
         raise Exception()
 
+
 @unittest.skipIf(3 < 2, 'This class will be executed because 3 is greater than 2.')
 class TestUnittest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
         print 'setUpClass'
+
     @classmethod
     def tearDownClass(cls):
         print 'tearDownClass'
@@ -64,18 +69,43 @@ class TestUnittest(unittest.TestCase):
         self.assertTrue(false)
 
     def test_basic_usage(self):
-        self.assertEqual(1,1)
-        self.assertNotEqual(1,2)
+        self.assertEqual(1, 1)
+        self.assertNotEqual(1, 2)
         self.assertTrue(True)
         self.assertFalse(False)
         self.assertIs(self.widget, self.widget)
         self.assertIsNot(self.widget, Widget('new widget'))
         self.assertIsNone(None)
         self.assertIsNotNone('A value')
-        self.assertIn(1, (1,2,3))
-        self.assertNotIn(1, (2,3,4))
+        self.assertIn(1, (1, 2, 3))
+        self.assertNotIn(1, (2, 3, 4))
         self.assertIsInstance(self.widget, Widget)
         self.assertNotIsInstance(1, Widget)
+        self.assertAlmostEqual(2.12345678, 2.12345679)
+        self.assertAlmostEqual(2.1, 2.2, delta=0.2)
+        self.assertNotAlmostEqual(2.1, 2, 2)
+        self.assertGreater(3, 2)
+        self.assertGreaterEqual(2, 2)
+        self.assertLess(1, 2)
+        self.assertLessEqual(1, 1)
+        self.assertRegexpMatches('a string', 'string')
+        self.assertNotRegexpMatches('a string', 'the')
+        # assertItemsEqual: sorted(a) == sorted(b)
+        self.assertItemsEqual([1, 2, 3], [1, 3, 2])
+        # assertDictContainsSubset: Deprecated since version 3.2.
+        self.assertDictContainsSubset(expected={
+                                      'key1': 1}, actual={'key1': 1, 'key2': 2})
+
+        self.assertMultiLineEqual('test', 'test')
+        """
+        assertSequenceEqual: This method is not called directly by assertEqual(), but it’s used to
+        implement assertListEqual() and assertTupleEqual().
+        """
+        self.assertSequenceEqual((1, 2), (1, 2))
+        self.assertListEqual([1, 2], [1, 2])
+        self.assertTupleEqual((1, 2), (1, 2))
+        self.assertSetEqual(Set(['a', 'b', 'c']), Set(['b', 'a', 'c']))
+        self.assertDictEqual({'key1': 1, 'key2': 2}, {'key1': 1, 'key2': 2})
 
     def test_raise_exception(self):
         with self.assertRaises(Exception):
@@ -86,7 +116,5 @@ if __name__ == '__main__':
 # Do not use the following way to trigger unit testing if you wanna use
 # nosetests as the test runner.
 
-#suite = unittest.TestLoader().loadTestsFromTestCase(TestUnittest)
-#unittest.TextTestRunner(verbosity=2).run(suite)
-
-
+# suite = unittest.TestLoader().loadTestsFromTestCase(TestUnittest)
+# unittest.TextTestRunner(verbosity=2).run(suite)
