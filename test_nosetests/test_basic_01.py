@@ -29,10 +29,16 @@ def test_evens():
         yield check_even, i
 
 
-def check_even(n):
-    assert n < 5
-
 # We can put with_setup on the method test_events, then the setup and teardown
 # functions will only be executed once. If we instead put the functions on the
 # method check_even, then setup and teardown functions will be executed five
 # times.
+def check_even(n):
+    assert n < 5
+
+
+def test_basic_assertion():
+    assert (1,2,3) == (1,2,3)
+    assert [1,2,3] == [1,2,3]
+    assert {'key1': 1, 'key2': 2} == {'key1': 1, 'key2': 2}
+
