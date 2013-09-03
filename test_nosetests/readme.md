@@ -9,7 +9,7 @@ type 'nosetests --all-modules' to enable collection and execution of tests in al
 
 Attrib
 ------
-A plugin to let you only execute the tests you want. Take a look at the sample code test_attrib_05.  
+A plugin to let you only execute the tests you want. Take a look at the sample code test_attrib_04.
 
 Capture
 -------
