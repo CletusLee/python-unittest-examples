@@ -28,7 +28,7 @@ Debug
 -----
 This plugin provides --pdb and --pdb-failures options. The --pdb option will drop the test runner into pdb when it encounters an error. To drop into pdb on failure, use --pdb-failures.
 
-Type 'nosetests --pdb-failure hidden_examples_04.py' to see how it works.
+Type 'nosetests --pdb-failure hidden_examples_03.py' to see how it works.
 
 Deprecated
 ----------

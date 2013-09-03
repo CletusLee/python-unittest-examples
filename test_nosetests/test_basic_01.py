@@ -1,4 +1,8 @@
 from nose.tools import with_setup
+from nose.plugins.deprecated import DeprecatedTest
+from nose.plugins.skip import SkipTest
+from nose.tools import nottest
+
 
 global_a, global_b = 0, 0
 
@@ -42,3 +46,13 @@ def test_basic_assertion():
     assert [1,2,3] == [1,2,3]
     assert {'key1': 1, 'key2': 2} == {'key1': 1, 'key2': 2}
 
+def test_deprecated_test_case():
+    raise DeprecatedTest
+
+def test_skip_plugin():
+    raise SkipTest
+
+
+@nottest
+def test_not_a_test():
+    pass
