@@ -25,7 +25,7 @@ class Widget(object):
         raise Exception()
 
 
-@unittest.skipIf(3 < 2, 'This class will be executed because 3 is greater than 2.')
+@unittest.skipIf(3 < 2, 'This class will be executed because 3 is greater than 2, which makes the condition false.')
 class TestUnittest(unittest.TestCase):
 
     @classmethod
